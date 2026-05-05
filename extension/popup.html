@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>英文翻译助手</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 340px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Microsoft YaHei", "Noto Sans SC", sans-serif;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      padding: 16px;
+      font-size: 13px;
+    }
+
+    h1 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #f0f0f0;
+    }
+
+    .section {
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 8px 10px;
+      background: #16213e;
+      border: 1px solid #333;
+      border-radius: 6px;
+      color: #e0e0e0;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input[type="password"]:focus {
+      border-color: #4a9eff;
+    }
+
+    input[type="password"]::placeholder {
+      color: #666;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px 16px;
+      background: #0f3460;
+      color: #e0e0e0;
+      border: 1px solid #1a4a7a;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: #1a4a7a;
+    }
+
+    .btn:active {
+      background: #0d2b52;
+    }
+
+    .btn.primary {
+      background: #1a6bff;
+      border-color: #1a6bff;
+    }
+
+    .btn.primary:hover {
+      background: #3a7fff;
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .status {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      display: none;
+    }
+
+    .status.show {
+      display: block;
+    }
+
+    .status.info {
+      background: #0d2b52;
+      color: #8ab4ff;
+    }
+
+    .status.success {
+      background: #0a3d2a;
+      color: #6fcf97;
+    }
+
+    .status.error {
+      background: #3d0a0a;
+      color: #cf6f6f;
+    }
+
+    .hint {
+      color: #666;
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    .shortcut-hint {
+      margin-top: 14px;
+      padding: 10px 12px;
+      background: #16213e;
+      border-radius: 8px;
+      font-size: 12px;
+      color: #999;
+      line-height: 1.8;
+    }
+
+    .shortcut-hint kbd {
+      display: inline-block;
+      padding: 1px 6px;
+      background: #2a2a4a;
+      border-radius: 4px;
+      font-size: 11px;
+      color: #ccc;
+      font-family: inherit;
+    }
+
+    .shortcut-hint strong {
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>📖 英文翻译助手</h1>
+
+  <div class="section">
+    <div class="section-title">API Key</div>
+    <input type="password" id="apiKey" placeholder="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" />
+    <div class="hint">DeepSeek API Key · 仅保存在本地</div>
+  </div>
+
+  <button class="btn primary" id="translateBtn">翻译本文</button>
+
+  <div id="status" class="status"></div>
+
+  <div class="shortcut-hint">
+    <strong>使用方式</strong><br />
+    1. 打开英文文章，点击上方「翻译本文」<br />
+    2. 预翻译完毕后，<strong>选中任意段落</strong><br />
+    3. 按键盘 <kbd>J</kbd> 显示译文<br />
+    4. 再按 <kbd>J</kbd> 或 <kbd>ESC</kbd> 或点击空白关闭
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
